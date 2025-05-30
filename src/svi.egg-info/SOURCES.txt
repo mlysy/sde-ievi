@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/svi/__init__.py
+src/svi/model_ryder.py
+src/svi/model_svi.py
+src/svi/model_svikalman.py
+src/svi/model_svimixed.py
+src/svi/utils.py
+src/svi.egg-info/PKG-INFO
+src/svi.egg-info/SOURCES.txt
+src/svi.egg-info/dependency_links.txt
+src/svi.egg-info/requires.txt
+src/svi.egg-info/top_level.txt

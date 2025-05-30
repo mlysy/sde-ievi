@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: svi
+Version: 0.0.1
+Summary: Variational Inference for SDEs
+Home-page: https://github.com/mohanwu/svi
+Author: attr: svi.__author__
+Author-email: mhwu@uwaterloo.ca
+Project-URL: Bug Tracker, https://github.com/mohanwu/svi/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+License-File: LICENSE
+Requires-Dist: jax
+Requires-Dist: jaxlib
+Requires-Dist: equinox
+Dynamic: license-file

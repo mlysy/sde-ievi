@@ -1,0 +1,11 @@
+/.quarto/
+
+_site
+reference
+
+# reference folder
+reference
+
+# interlinks
+objects.json
+_sidebar.yml

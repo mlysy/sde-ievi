@@ -1,0 +1,26 @@
+project:
+  type: website
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - _sidebar.yml
+
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: svi
+
+  # write sidebar data to this file
+  sidebar: _sidebar.yml
+
+  parser: google
+  sections:
+    - title: Gaussian Model
+      desc: The variational distribution used to sample the latent SDE.
+      contents:
+        - model_svi.SmoothModel
+    
+    - title: Mixed-Effects Model
+      desc: The variational distribution used for the Orange tree growth SDE.
+      contents:
+        - model_svimixed.SmoothModel
