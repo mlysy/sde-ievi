@@ -5,4 +5,5 @@ build
 saves
 *.ipynb
 examples/
+svi-.egg-info
 
