@@ -1,9 +1,0 @@
-.ipynb_checkpoints
-.DS_Store
-__pycache__
-build
-saves
-*.ipynb
-examples/
-svi-.egg-info
-
