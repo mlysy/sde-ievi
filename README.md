@@ -1,3 +1,4 @@
-# SVI
-Stochastic Variational Inference for SDEs
+# IEVI
+
+Information-Efficient Variational Inference for Stochastic Differential Equations
 
