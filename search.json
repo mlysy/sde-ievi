@@ -1,38 +1,5 @@
 [
   {
-    "objectID": "reference/model_svimixed.SmoothModel.html",
-    "href": "reference/model_svimixed.SmoothModel.html",
-    "title": "model_svimixed.SmoothModel",
-    "section": "",
-    "text": "model_svimixed.SmoothModel(\n    self\n    n_state\n    random_ind\n    fixed_ind\n    obs_times\n    sde_times\n)\nThe variational distribution is given by \\[\\begin{equation}\n\\begin{aligned}\n    \\theta \\mid y_{0:N} &\\sim N(\\mu(y_{0:N}), \\Sigma(y_{0:N})) \\\\\n    \\eta \\mid y_{0:N}, \\theta &\\sim N(A(y_{0:N}) \\theta + b(y_{0:N}), V(y_{0:N})) \\\\\n    x_{0:N} \\mid y_{0:N}, \\eta  &\\sim N\\big(\\mu_{x} (y_{0:N}, \\eta), \\Sigma_{x}(y_{0:N}, \\eta)\\big).\n\\end{aligned}\n\\end{equation}\\] where \\(x\\) are the latents, \\(y\\) are the observations, \\(\\theta\\) are the SDE parameters, and \\(\\eta\\) are the random effects. The random-effects are modelled via a neural network given by \\[\nA, b, V = \\textnormal{NN}_{\\eta}(y_{0:N}),\n\\] where random effects are simulated via \\(\\eta = A \\theta + b + V \\epsilon\\). The latents are modelled by a RNN give by \\[\n\\mu_{x}, \\Sigma_{x} = \\textnormal{RNN}(y_{0:N}, \\eta)\n\\] by fitting the Kalman filtering parameters. On the backward pass we use the conditional Gaussian model given by \\[\\begin{equation}\n\\begin{aligned}\n    x_n \\mid x_{n+1} \\sim N(\\mu^\\prime_n, \\Sigma^\\prime_n)\n\\end{aligned}\n\\end{equation}\\] where we fit a neural network to find \\[\n\\mu^\\prime_n, \\Sigma^\\prime_n = \\textnormal{NN}(x_{n+1}, \\mu_{x}, \\Sigma_{x}).\n\\]\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nrandom_ind\njax.Array\nIndices of the parameters used to generate the random effects.\nrequired\n\n\nfixed_ind\njax.Array\nIndices of the fixed-effect parameters.\nrequired\n\n\nobs_times\njax.Array\nObservation time points.\nrequired\n\n\nsde_times\njax.Array\nDiscretization time points used to sample the latents.\nrequired\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nsimulate\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute\n\n\n\n\n\nmodel_svimixed.SmoothModel.simulate(key, params, y_meas, x_init)\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute \\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(\\theta\\) and \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess of the latent.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\ntheta\njax.Array\nSDE parameters.\n\n\neta\njax.Array\nRandom effects.\n\n\nlogpdf\nfloat\n\\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).",
-    "crumbs": [
-      "Mixed-Effects IEVI Model",
-      "model_svimixed.SmoothModel"
-    ]
-  },
-  {
-    "objectID": "reference/model_svimixed.SmoothModel.html#parameters",
-    "href": "reference/model_svimixed.SmoothModel.html#parameters",
-    "title": "model_svimixed.SmoothModel",
-    "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nrandom_ind\njax.Array\nIndices of the parameters used to generate the random effects.\nrequired\n\n\nfixed_ind\njax.Array\nIndices of the fixed-effect parameters.\nrequired\n\n\nobs_times\njax.Array\nObservation time points.\nrequired\n\n\nsde_times\njax.Array\nDiscretization time points used to sample the latents.\nrequired",
-    "crumbs": [
-      "Mixed-Effects IEVI Model",
-      "model_svimixed.SmoothModel"
-    ]
-  },
-  {
-    "objectID": "reference/model_svimixed.SmoothModel.html#methods",
-    "href": "reference/model_svimixed.SmoothModel.html#methods",
-    "title": "model_svimixed.SmoothModel",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nsimulate\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute\n\n\n\n\n\nmodel_svimixed.SmoothModel.simulate(key, params, y_meas, x_init)\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute \\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(\\theta\\) and \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess of the latent.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\ntheta\njax.Array\nSDE parameters.\n\n\neta\njax.Array\nRandom effects.\n\n\nlogpdf\nfloat\n\\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).",
-    "crumbs": [
-      "Mixed-Effects IEVI Model",
-      "model_svimixed.SmoothModel"
-    ]
-  },
-  {
     "objectID": "reference/model_ryder.RyderModel.html",
     "href": "reference/model_ryder.RyderModel.html",
     "title": "model_ryder.RyderModel",
@@ -66,11 +33,44 @@
     ]
   },
   {
+    "objectID": "reference/model_ievi.SmoothModel.html",
+    "href": "reference/model_ievi.SmoothModel.html",
+    "title": "model_ievi.SmoothModel",
+    "section": "",
+    "text": "model_ievi.SmoothModel(self, n_state, obs_times, sde_times)\nThe variational distribution is given by \\[\\begin{equation}\n\\begin{aligned}\n    \\theta \\mid y_{0:N} &\\sim N(\\mu(y_{0:N}), \\Sigma(y_{0:N})) \\\\\n    x_{0:N} \\mid y_{0:N}, \\theta  &\\sim N\\big(\\mu_{x} (y_{0:N}, \\theta), \\Sigma_{x}(y_{0:N}, \\theta)\\big).\n\\end{aligned}\n\\end{equation}\\] where \\(x\\) are the latents, \\(y\\) are the observations, and \\(\\theta\\) are the SDE parameters. The underlying RNN provides \\[\n\\mu_{x}, \\Sigma_{x} = \\textnormal{RNN}(y_{0:N}, \\theta)\n\\] by fitting the Kalman filtering parameters. On the backward pass we use the conditional Gaussian model given by \\[\\begin{equation}\n\\begin{aligned}\n    x_n \\mid x_{n+1} &\\sim N(\\mu^\\prime_n, \\Sigma^\\prime_n)\n\\end{aligned}\n\\end{equation}\\] where we fit a neural network to find \\[\n\\mu^\\prime_n, \\Sigma^\\prime_n = \\textnormal{NN}(x_{n+1}, \\mu_{x}, \\Sigma_{x}).\n\\]\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nobs_times\njax.Array\nThe observation time points.\nrequired\n\n\nsde_times\njax.Array\nThe discretization time points used to sample the latents.\nrequired\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nsimulate\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\nsimulate_theta\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).\n\n\n\n\n\nmodel_ievi.SmoothModel.simulate(key, params, y_meas, x_init, theta)\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess for the latents.\nrequired\n\n\ntheta\njax.Array\nSDE parameters.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\nlogpdf\nfloat\n\\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\nmodel_ievi.SmoothModel.simulate_theta(key, params)\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).",
+    "crumbs": [
+      "Standard IEVI Model",
+      "model_ievi.SmoothModel"
+    ]
+  },
+  {
+    "objectID": "reference/model_ievi.SmoothModel.html#parameters",
+    "href": "reference/model_ievi.SmoothModel.html#parameters",
+    "title": "model_ievi.SmoothModel",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nobs_times\njax.Array\nThe observation time points.\nrequired\n\n\nsde_times\njax.Array\nThe discretization time points used to sample the latents.\nrequired",
+    "crumbs": [
+      "Standard IEVI Model",
+      "model_ievi.SmoothModel"
+    ]
+  },
+  {
+    "objectID": "reference/model_ievi.SmoothModel.html#methods",
+    "href": "reference/model_ievi.SmoothModel.html#methods",
+    "title": "model_ievi.SmoothModel",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nsimulate\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\nsimulate_theta\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).\n\n\n\n\n\nmodel_ievi.SmoothModel.simulate(key, params, y_meas, x_init, theta)\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess for the latents.\nrequired\n\n\ntheta\njax.Array\nSDE parameters.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\nlogpdf\nfloat\n\\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\nmodel_ievi.SmoothModel.simulate_theta(key, params)\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).",
+    "crumbs": [
+      "Standard IEVI Model",
+      "model_ievi.SmoothModel"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "IEVI: Information-Efficient Variational Inference for SDEs",
     "section": "",
-    "text": "IEVI is a variational inference method for SDEs that approximates the intractable latent posterior. Compared to other variational inference methods, IEVI captures not only the correct conditional dependence structure but also the correct information flow from the observations to the intractable posterior.\n\n\n\n\nThis will clone the repo into a subfolder ievi, from where you (i) issue the git clone command and (ii) install the package from source.\ngit clone https://github.com/mlysy/ievi\ncd ievi\npip install .\n\n\n\nFrom within ievi/docs:\nquartodoc build\nquarto render"
+    "text": "IEVI is a variational inference method for SDEs that approximates the intractable latent posterior. Compared to other variational inference methods, IEVI captures not only the correct conditional dependence structure but also the correct information flow from the observations to the intractable posterior.\n\n\n\n\nThis will clone the repo into a subfolder sde-ievi, from where you (i) issue the git clone command and (ii) install the package from source.\ngit clone https://github.com/mlysy/sde-ievi\ncd sde-ievi\npip install .\n\n\n\nFrom within sde-ievi/docs:\nquartodoc build\nquarto render"
   },
   {
     "objectID": "index.html#what-is-ievi",
@@ -84,21 +84,21 @@
     "href": "index.html#installation",
     "title": "IEVI: Information-Efficient Variational Inference for SDEs",
     "section": "",
-    "text": "This will clone the repo into a subfolder ievi, from where you (i) issue the git clone command and (ii) install the package from source.\ngit clone https://github.com/mlysy/ievi\ncd ievi\npip install ."
+    "text": "This will clone the repo into a subfolder sde-ievi, from where you (i) issue the git clone command and (ii) install the package from source.\ngit clone https://github.com/mlysy/sde-ievi\ncd sde-ievi\npip install ."
   },
   {
     "objectID": "index.html#building-documentation",
     "href": "index.html#building-documentation",
     "title": "IEVI: Information-Efficient Variational Inference for SDEs",
     "section": "",
-    "text": "From within ievi/docs:\nquartodoc build\nquarto render"
+    "text": "From within sde-ievi/docs:\nquartodoc build\nquarto render"
   },
   {
     "objectID": "reference/index.html",
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "Standard IEVI model.\n\n\n\nmodel_svi.SmoothModel\nThe variational distribution is given by\n\n\n\n\n\n\nIEVI for standard Gaussian models.\n\n\n\nmodel_svi.SmoothModel\nThe variational distribution is given by\n\n\n\n\n\n\nIEVI for mixed-effects models.\n\n\n\nmodel_svimixed.SmoothModel\nThe variational distribution is given by\n\n\n\n\n\n\nRyder model.\n\n\n\nmodel_ryder.RyderModel\nThis module implement the RNN method of Ryder at al. (2018)",
+    "text": "Standard IEVI model.\n\n\n\nmodel_ievi.SmoothModel\nThe variational distribution is given by\n\n\n\n\n\n\nIEVI for standard Gaussian models.\n\n\n\nmodel_ievi.SmoothModel\nThe variational distribution is given by\n\n\n\n\n\n\nIEVI for mixed-effects models.\n\n\n\nmodel_ievimixed.SmoothModel\nThe variational distribution is given by\n\n\n\n\n\n\nRyder model.\n\n\n\nmodel_ryder.RyderModel\nThis module implement the RNN method of Ryder at al. (2018)",
     "crumbs": [
       "Function reference"
     ]
@@ -108,7 +108,7 @@
     "href": "reference/index.html#standard-ievi-model",
     "title": "Function reference",
     "section": "",
-    "text": "Standard IEVI model.\n\n\n\nmodel_svi.SmoothModel\nThe variational distribution is given by",
+    "text": "Standard IEVI model.\n\n\n\nmodel_ievi.SmoothModel\nThe variational distribution is given by",
     "crumbs": [
       "Function reference"
     ]
@@ -118,7 +118,7 @@
     "href": "reference/index.html#gaussian-ievi-model",
     "title": "Function reference",
     "section": "",
-    "text": "IEVI for standard Gaussian models.\n\n\n\nmodel_svi.SmoothModel\nThe variational distribution is given by",
+    "text": "IEVI for standard Gaussian models.\n\n\n\nmodel_ievi.SmoothModel\nThe variational distribution is given by",
     "crumbs": [
       "Function reference"
     ]
@@ -128,7 +128,7 @@
     "href": "reference/index.html#mixed-effects-ievi-model",
     "title": "Function reference",
     "section": "",
-    "text": "IEVI for mixed-effects models.\n\n\n\nmodel_svimixed.SmoothModel\nThe variational distribution is given by",
+    "text": "IEVI for mixed-effects models.\n\n\n\nmodel_ievimixed.SmoothModel\nThe variational distribution is given by",
     "crumbs": [
       "Function reference"
     ]
@@ -144,36 +144,36 @@
     ]
   },
   {
-    "objectID": "reference/model_svi.SmoothModel.html",
-    "href": "reference/model_svi.SmoothModel.html",
-    "title": "model_svi.SmoothModel",
+    "objectID": "reference/model_ievimixed.SmoothModel.html",
+    "href": "reference/model_ievimixed.SmoothModel.html",
+    "title": "model_ievimixed.SmoothModel",
     "section": "",
-    "text": "model_svi.SmoothModel(self, n_state, obs_times, sde_times)\nThe variational distribution is given by \\[\\begin{equation}\n\\begin{aligned}\n    \\theta \\mid y_{0:N} &\\sim N(\\mu(y_{0:N}), \\Sigma(y_{0:N})) \\\\\n    x_{0:N} \\mid y_{0:N}, \\theta  &\\sim N\\big(\\mu_{x} (y_{0:N}, \\theta), \\Sigma_{x}(y_{0:N}, \\theta)\\big).\n\\end{aligned}\n\\end{equation}\\] where \\(x\\) are the latents, \\(y\\) are the observations, and \\(\\theta\\) are the SDE parameters. The underlying RNN provides \\[\n\\mu_{x}, \\Sigma_{x} = \\textnormal{RNN}(y_{0:N}, \\theta)\n\\] by fitting the Kalman filtering parameters. On the backward pass we use the conditional Gaussian model given by \\[\\begin{equation}\n\\begin{aligned}\n    x_n \\mid x_{n+1} &\\sim N(\\mu^\\prime_n, \\Sigma^\\prime_n)\n\\end{aligned}\n\\end{equation}\\] where we fit a neural network to find \\[\n\\mu^\\prime_n, \\Sigma^\\prime_n = \\textnormal{NN}(x_{n+1}, \\mu_{x}, \\Sigma_{x}).\n\\]\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nobs_times\njax.Array\nThe observation time points.\nrequired\n\n\nsde_times\njax.Array\nThe discretization time points used to sample the latents.\nrequired\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nsimulate\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\nsimulate_theta\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).\n\n\n\n\n\nmodel_svi.SmoothModel.simulate(key, params, y_meas, x_init, theta)\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess for the latents.\nrequired\n\n\ntheta\njax.Array\nSDE parameters.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\nlogpdf\nfloat\n\\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\nmodel_svi.SmoothModel.simulate_theta(key, params)\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).",
+    "text": "model_ievimixed.SmoothModel(\n    self\n    n_state\n    random_ind\n    fixed_ind\n    obs_times\n    sde_times\n)\nThe variational distribution is given by \\[\\begin{equation}\n\\begin{aligned}\n    \\theta \\mid y_{0:N} &\\sim N(\\mu(y_{0:N}), \\Sigma(y_{0:N})) \\\\\n    \\eta \\mid y_{0:N}, \\theta &\\sim N(A(y_{0:N}) \\theta + b(y_{0:N}), V(y_{0:N})) \\\\\n    x_{0:N} \\mid y_{0:N}, \\eta  &\\sim N\\big(\\mu_{x} (y_{0:N}, \\eta), \\Sigma_{x}(y_{0:N}, \\eta)\\big).\n\\end{aligned}\n\\end{equation}\\] where \\(x\\) are the latents, \\(y\\) are the observations, \\(\\theta\\) are the SDE parameters, and \\(\\eta\\) are the random effects. The random-effects are modelled via a neural network given by \\[\nA, b, V = \\textnormal{NN}_{\\eta}(y_{0:N}),\n\\] where random effects are simulated via \\(\\eta = A \\theta + b + V \\epsilon\\). The latents are modelled by a RNN give by \\[\n\\mu_{x}, \\Sigma_{x} = \\textnormal{RNN}(y_{0:N}, \\eta)\n\\] by fitting the Kalman filtering parameters. On the backward pass we use the conditional Gaussian model given by \\[\\begin{equation}\n\\begin{aligned}\n    x_n \\mid x_{n+1} \\sim N(\\mu^\\prime_n, \\Sigma^\\prime_n)\n\\end{aligned}\n\\end{equation}\\] where we fit a neural network to find \\[\n\\mu^\\prime_n, \\Sigma^\\prime_n = \\textnormal{NN}(x_{n+1}, \\mu_{x}, \\Sigma_{x}).\n\\]\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nrandom_ind\njax.Array\nIndices of the parameters used to generate the random effects.\nrequired\n\n\nfixed_ind\njax.Array\nIndices of the fixed-effect parameters.\nrequired\n\n\nobs_times\njax.Array\nObservation time points.\nrequired\n\n\nsde_times\njax.Array\nDiscretization time points used to sample the latents.\nrequired\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nsimulate\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute\n\n\n\n\n\nmodel_ievimixed.SmoothModel.simulate(key, params, y_meas, x_init)\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute \\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(\\theta\\) and \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess of the latent.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\ntheta\njax.Array\nSDE parameters.\n\n\neta\njax.Array\nRandom effects.\n\n\nlogpdf\nfloat\n\\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).",
     "crumbs": [
-      "Standard IEVI Model",
-      "model_svi.SmoothModel"
+      "Mixed-Effects IEVI Model",
+      "model_ievimixed.SmoothModel"
     ]
   },
   {
-    "objectID": "reference/model_svi.SmoothModel.html#parameters",
-    "href": "reference/model_svi.SmoothModel.html#parameters",
-    "title": "model_svi.SmoothModel",
+    "objectID": "reference/model_ievimixed.SmoothModel.html#parameters",
+    "href": "reference/model_ievimixed.SmoothModel.html#parameters",
+    "title": "model_ievimixed.SmoothModel",
     "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nobs_times\njax.Array\nThe observation time points.\nrequired\n\n\nsde_times\njax.Array\nThe discretization time points used to sample the latents.\nrequired",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nn_state\nint\nDimension of the latent at each time point.\nrequired\n\n\nrandom_ind\njax.Array\nIndices of the parameters used to generate the random effects.\nrequired\n\n\nfixed_ind\njax.Array\nIndices of the fixed-effect parameters.\nrequired\n\n\nobs_times\njax.Array\nObservation time points.\nrequired\n\n\nsde_times\njax.Array\nDiscretization time points used to sample the latents.\nrequired",
     "crumbs": [
-      "Standard IEVI Model",
-      "model_svi.SmoothModel"
+      "Mixed-Effects IEVI Model",
+      "model_ievimixed.SmoothModel"
     ]
   },
   {
-    "objectID": "reference/model_svi.SmoothModel.html#methods",
-    "href": "reference/model_svi.SmoothModel.html#methods",
-    "title": "model_svi.SmoothModel",
+    "objectID": "reference/model_ievimixed.SmoothModel.html#methods",
+    "href": "reference/model_ievimixed.SmoothModel.html#methods",
+    "title": "model_ievimixed.SmoothModel",
     "section": "",
-    "text": "Name\nDescription\n\n\n\n\nsimulate\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\nsimulate_theta\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).\n\n\n\n\n\nmodel_svi.SmoothModel.simulate(key, params, y_meas, x_init, theta)\nSimulate \\(x\\) using IEVI and compute \\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess for the latents.\nrequired\n\n\ntheta\njax.Array\nSDE parameters.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\nlogpdf\nfloat\n\\(\\log q(x \\mid \\theta)\\).\n\n\n\n\n\n\n\nmodel_svi.SmoothModel.simulate_theta(key, params)\nSimulate \\(\\theta\\) using the variation distribution. Also compute \\(\\log q(\\theta)\\).",
+    "text": "Name\nDescription\n\n\n\n\nsimulate\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute\n\n\n\n\n\nmodel_ievimixed.SmoothModel.simulate(key, params, y_meas, x_init)\nSimulate \\(\\theta\\), \\(\\eta\\), and \\(x\\) using IEVI and compute \\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nkey\njax.PRNGKey\nPRNG key.\nrequired\n\n\nparams\ndict\nDictionary holding the neural network parameters and other parameters necessary to simulate \\(\\theta\\) and \\(x\\).\nrequired\n\n\ny_meas\njax.Array\nObservations.\nrequired\n\n\nx_init\njax.Array\nInitial guess of the latent.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nx\njax.Array\nLatents at the SDE time points.\n\n\ntheta\njax.Array\nSDE parameters.\n\n\neta\njax.Array\nRandom effects.\n\n\nlogpdf\nfloat\n\\(\\log q(\\theta) + \\log q(\\eta \\mid \\theta) + \\log q(x \\mid \\eta)\\).",
     "crumbs": [
-      "Standard IEVI Model",
-      "model_svi.SmoothModel"
+      "Mixed-Effects IEVI Model",
+      "model_ievimixed.SmoothModel"
     ]
   }
 ]

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>model_svimixed.smoothmodel – IEVI</title>
+<title>model_ievimixed.smoothmodel – IEVI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../reference/model_ryder.RyderModel.html" rel="next">
-<link href="../reference/model_svi.SmoothModel.html" rel="prev">
+<link href="../reference/model_ievi.SmoothModel.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -159,7 +159,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mlysy/svi/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mlysy/sde-ievi"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -174,7 +174,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/model_svimixed.SmoothModel.html">Mixed-Effects IEVI Model</a></li><li class="breadcrumb-item"><a href="../reference/model_svimixed.SmoothModel.html">model_svimixed.SmoothModel</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/model_ievimixed.SmoothModel.html">Mixed-Effects IEVI Model</a></li><li class="breadcrumb-item"><a href="../reference/model_ievimixed.SmoothModel.html">model_ievimixed.SmoothModel</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -203,8 +203,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/model_svi.SmoothModel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">model_svi.SmoothModel</span></a>
+  <a href="../reference/model_ievi.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievi.SmoothModel</span></a>
   </div>
 </li>
       </ul>
@@ -220,8 +220,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/model_svi.SmoothModel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">model_svi.SmoothModel</span></a>
+  <a href="../reference/model_ievi.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievi.SmoothModel</span></a>
   </div>
 </li>
       </ul>
@@ -237,8 +237,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/model_svimixed.SmoothModel.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">model_svimixed.SmoothModel</span></a>
+  <a href="../reference/model_ievimixed.SmoothModel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">model_ievimixed.SmoothModel</span></a>
   </div>
 </li>
       </ul>
@@ -270,26 +270,26 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#svi.model_svimixed.SmoothModel" id="toc-svi.model_svimixed.SmoothModel" class="nav-link active" data-scroll-target="#svi.model_svimixed.SmoothModel">model_svimixed.SmoothModel</a>
+  <li><a href="#ievi.model_ievimixed.SmoothModel" id="toc-ievi.model_ievimixed.SmoothModel" class="nav-link active" data-scroll-target="#ievi.model_ievimixed.SmoothModel">model_ievimixed.SmoothModel</a>
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
-  <li><a href="#svi.model_svimixed.SmoothModel.simulate" id="toc-svi.model_svimixed.SmoothModel.simulate" class="nav-link" data-scroll-target="#svi.model_svimixed.SmoothModel.simulate">simulate</a></li>
+  <li><a href="#ievi.model_ievimixed.SmoothModel.simulate" id="toc-ievi.model_ievimixed.SmoothModel.simulate" class="nav-link" data-scroll-target="#ievi.model_ievimixed.SmoothModel.simulate">simulate</a></li>
   </ul></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/model_svimixed.SmoothModel.html">Mixed-Effects IEVI Model</a></li><li class="breadcrumb-item"><a href="../reference/model_svimixed.SmoothModel.html">model_svimixed.SmoothModel</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/model_ievimixed.SmoothModel.html">Mixed-Effects IEVI Model</a></li><li class="breadcrumb-item"><a href="../reference/model_ievimixed.SmoothModel.html">model_ievimixed.SmoothModel</a></li></ol></nav></header>
 
 
 
 
-<section id="svi.model_svimixed.SmoothModel" class="level1">
-<h1>model_svimixed.SmoothModel</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model_svimixed.SmoothModel(</span>
+<section id="ievi.model_ievimixed.SmoothModel" class="level1">
+<h1>model_ievimixed.SmoothModel</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model_ievimixed.SmoothModel(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    n_state</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    random_ind</span>
@@ -376,14 +376,14 @@ A, b, V = \textnormal{NN}_{\eta}(y_{0:N}),
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#svi.model_svimixed.SmoothModel.simulate">simulate</a></td>
+<td><a href="#ievi.model_ievimixed.SmoothModel.simulate">simulate</a></td>
 <td>Simulate <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\eta\)</span>, and <span class="math inline">\(x\)</span> using IEVI and compute</td>
 </tr>
 </tbody>
 </table>
-<section id="svi.model_svimixed.SmoothModel.simulate" class="level3">
-<h3 class="anchored" data-anchor-id="svi.model_svimixed.SmoothModel.simulate">simulate</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_svimixed.SmoothModel.simulate(key, params, y_meas, x_init)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="ievi.model_ievimixed.SmoothModel.simulate" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ievimixed.SmoothModel.simulate">simulate</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_ievimixed.SmoothModel.simulate(key, params, y_meas, x_init)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Simulate <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\eta\)</span>, and <span class="math inline">\(x\)</span> using IEVI and compute <span class="math inline">\(\log q(\theta) + \log q(\eta \mid \theta) + \log q(x \mid \eta)\)</span>.</p>
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
@@ -895,8 +895,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/model_svi.SmoothModel.html" class="pagination-link" aria-label="model_svi.SmoothModel">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">model_svi.SmoothModel</span>
+      <a href="../reference/model_ievi.SmoothModel.html" class="pagination-link" aria-label="model_ievi.SmoothModel">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">model_ievi.SmoothModel</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

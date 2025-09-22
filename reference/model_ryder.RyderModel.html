@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reference/model_svimixed.SmoothModel.html" rel="prev">
+<link href="../reference/model_ievimixed.SmoothModel.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -158,7 +158,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mlysy/svi/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mlysy/sde-ievi"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -202,8 +202,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/model_svi.SmoothModel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">model_svi.SmoothModel</span></a>
+  <a href="../reference/model_ievi.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievi.SmoothModel</span></a>
   </div>
 </li>
       </ul>
@@ -219,8 +219,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/model_svi.SmoothModel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">model_svi.SmoothModel</span></a>
+  <a href="../reference/model_ievi.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievi.SmoothModel</span></a>
   </div>
 </li>
       </ul>
@@ -236,8 +236,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/model_svimixed.SmoothModel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">model_svimixed.SmoothModel</span></a>
+  <a href="../reference/model_ievimixed.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievimixed.SmoothModel</span></a>
   </div>
 </li>
       </ul>
@@ -269,14 +269,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#svi.model_ryder.RyderModel" id="toc-svi.model_ryder.RyderModel" class="nav-link active" data-scroll-target="#svi.model_ryder.RyderModel">model_ryder.RyderModel</a>
+  <li><a href="#ievi.model_ryder.RyderModel" id="toc-ievi.model_ryder.RyderModel" class="nav-link active" data-scroll-target="#ievi.model_ryder.RyderModel">model_ryder.RyderModel</a>
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
-  <li><a href="#svi.model_ryder.RyderModel.simulate" id="toc-svi.model_ryder.RyderModel.simulate" class="nav-link" data-scroll-target="#svi.model_ryder.RyderModel.simulate">simulate</a></li>
-  <li><a href="#svi.model_ryder.RyderModel.simulate_theta" id="toc-svi.model_ryder.RyderModel.simulate_theta" class="nav-link" data-scroll-target="#svi.model_ryder.RyderModel.simulate_theta">simulate_theta</a></li>
-  <li><a href="#svi.model_ryder.RyderModel.simulate_theta_rnn" id="toc-svi.model_ryder.RyderModel.simulate_theta_rnn" class="nav-link" data-scroll-target="#svi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</a></li>
+  <li><a href="#ievi.model_ryder.RyderModel.simulate" id="toc-ievi.model_ryder.RyderModel.simulate" class="nav-link" data-scroll-target="#ievi.model_ryder.RyderModel.simulate">simulate</a></li>
+  <li><a href="#ievi.model_ryder.RyderModel.simulate_theta" id="toc-ievi.model_ryder.RyderModel.simulate_theta" class="nav-link" data-scroll-target="#ievi.model_ryder.RyderModel.simulate_theta">simulate_theta</a></li>
+  <li><a href="#ievi.model_ryder.RyderModel.simulate_theta_rnn" id="toc-ievi.model_ryder.RyderModel.simulate_theta_rnn" class="nav-link" data-scroll-target="#ievi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -288,7 +288,7 @@ window.Quarto = {
 
 
 
-<section id="svi.model_ryder.RyderModel" class="level1">
+<section id="ievi.model_ryder.RyderModel" class="level1">
 <h1>model_ryder.RyderModel</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span></span>
@@ -364,21 +364,21 @@ RNN takes on the features:
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#svi.model_ryder.RyderModel.simulate">simulate</a></td>
+<td><a href="#ievi.model_ryder.RyderModel.simulate">simulate</a></td>
 <td>Simulate <span class="math inline">\(x\)</span> using Ryder and compute <span class="math inline">\(\log q(x \mid \theta)\)</span>.</td>
 </tr>
 <tr class="even">
-<td><a href="#svi.model_ryder.RyderModel.simulate_theta">simulate_theta</a></td>
+<td><a href="#ievi.model_ryder.RyderModel.simulate_theta">simulate_theta</a></td>
 <td>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</td>
 </tr>
 <tr class="odd">
-<td><a href="#svi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</a></td>
+<td><a href="#ievi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</a></td>
 <td>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution assuming a RNN. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</td>
 </tr>
 </tbody>
 </table>
-<section id="svi.model_ryder.RyderModel.simulate" class="level3">
-<h3 class="anchored" data-anchor-id="svi.model_ryder.RyderModel.simulate">simulate</h3>
+<section id="ievi.model_ryder.RyderModel.simulate" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ryder.RyderModel.simulate">simulate</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel.simulate(key, params, y_meas, x_init, theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Simulate <span class="math inline">\(x\)</span> using Ryder and compute <span class="math inline">\(\log q(x \mid \theta)\)</span>.</p>
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
@@ -457,13 +457,13 @@ RNN takes on the features:
 </table>
 </section>
 </section>
-<section id="svi.model_ryder.RyderModel.simulate_theta" class="level3">
-<h3 class="anchored" data-anchor-id="svi.model_ryder.RyderModel.simulate_theta">simulate_theta</h3>
+<section id="ievi.model_ryder.RyderModel.simulate_theta" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ryder.RyderModel.simulate_theta">simulate_theta</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel.simulate_theta(key, params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</p>
 </section>
-<section id="svi.model_ryder.RyderModel.simulate_theta_rnn" class="level3">
-<h3 class="anchored" data-anchor-id="svi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</h3>
+<section id="ievi.model_ryder.RyderModel.simulate_theta_rnn" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel.simulate_theta_rnn(key, params, y_meas, n_theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution assuming a RNN. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</p>
 
@@ -892,8 +892,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/model_svimixed.SmoothModel.html" class="pagination-link" aria-label="model_svimixed.SmoothModel">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">model_svimixed.SmoothModel</span>
+      <a href="../reference/model_ievimixed.SmoothModel.html" class="pagination-link" aria-label="model_ievimixed.SmoothModel">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">model_ievimixed.SmoothModel</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
