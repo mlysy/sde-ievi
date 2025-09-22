@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://mlysy.github.io/sde-ievi/reference/model_ryder.RyderModel.html</loc>
+    <lastmod>2025-09-22T17:59:01.792Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlysy.github.io/sde-ievi/reference/model_ievi.SmoothModel.html</loc>
+    <lastmod>2025-09-22T17:59:01.774Z</lastmod>
+  </url>
+  <url>
     <loc>https://mlysy.github.io/sde-ievi/index.html</loc>
-    <lastmod>2025-09-22T18:47:00.795Z</lastmod>
+    <lastmod>2025-09-22T18:30:07.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlysy.github.io/sde-ievi/reference/index.html</loc>
+    <lastmod>2025-09-22T18:37:32.306Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mlysy.github.io/sde-ievi/reference/model_ievimixed.SmoothModel.html</loc>
+    <lastmod>2025-09-22T17:59:01.789Z</lastmod>
   </url>
 </urlset>

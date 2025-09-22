@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IEVI</title>
+<title>model_ryder.rydermodel – IEVI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d4be639c637f3db3c684c66cefad7e0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../reference/model_ievimixed.SmoothModel.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d4be639c637f3db3c684c66cefad7e0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,17 +102,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">IEVI</span>
     </a>
   </div>
@@ -122,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./reference/"> 
+    <a class="nav-link" href="../reference/"> 
 <span class="menu-text">Reference</span></a>
   </li>  
 </ul>
@@ -138,53 +168,307 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/model_ryder.RyderModel.html">Ryder Model</a></li><li class="breadcrumb-item"><a href="../reference/model_ryder.RyderModel.html">model_ryder.RyderModel</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Function reference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Standard IEVI Model</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/model_ievi.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievi.SmoothModel</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Gaussian IEVI Model</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/model_ievi.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievi.SmoothModel</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mixed-Effects IEVI Model</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/model_ievimixed.SmoothModel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model_ievimixed.SmoothModel</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Ryder Model</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/model_ryder.RyderModel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">model_ryder.RyderModel</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ievi-information-efficient-variational-inference-for-sdes" id="toc-ievi-information-efficient-variational-inference-for-sdes" class="nav-link active" data-scroll-target="#ievi-information-efficient-variational-inference-for-sdes"><strong>IEVI</strong>: Information-Efficient Variational Inference for SDEs</a>
+  <li><a href="#ievi.model_ryder.RyderModel" id="toc-ievi.model_ryder.RyderModel" class="nav-link active" data-scroll-target="#ievi.model_ryder.RyderModel">model_ryder.RyderModel</a>
   <ul class="collapse">
-  <li><a href="#what-is-ievi" id="toc-what-is-ievi" class="nav-link" data-scroll-target="#what-is-ievi">What is <strong>IEVI</strong>?</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#building-documentation" id="toc-building-documentation" class="nav-link" data-scroll-target="#building-documentation">Building Documentation</a></li>
+  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#ievi.model_ryder.RyderModel.simulate" id="toc-ievi.model_ryder.RyderModel.simulate" class="nav-link" data-scroll-target="#ievi.model_ryder.RyderModel.simulate">simulate</a></li>
+  <li><a href="#ievi.model_ryder.RyderModel.simulate_theta" id="toc-ievi.model_ryder.RyderModel.simulate_theta" class="nav-link" data-scroll-target="#ievi.model_ryder.RyderModel.simulate_theta">simulate_theta</a></li>
+  <li><a href="#ievi.model_ryder.RyderModel.simulate_theta_rnn" id="toc-ievi.model_ryder.RyderModel.simulate_theta_rnn" class="nav-link" data-scroll-target="#ievi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/model_ryder.RyderModel.html">Ryder Model</a></li><li class="breadcrumb-item"><a href="../reference/model_ryder.RyderModel.html">model_ryder.RyderModel</a></li></ol></nav></header>
 
 
 
 
-<section id="ievi-information-efficient-variational-inference-for-sdes" class="level1">
-<h1><strong>IEVI</strong>: Information-Efficient Variational Inference for SDEs</h1>
-<hr>
-<section id="what-is-ievi" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-ievi">What is <strong>IEVI</strong>?</h2>
-<p><strong>IEVI</strong> is a variational inference method for SDEs that approximates the intractable latent posterior. Compared to other variational inference methods, <strong>IEVI</strong> captures not only the correct conditional dependence structure but also the correct <em>information flow</em> from the observations to the intractable posterior.</p>
-<hr>
+<section id="ievi.model_ryder.RyderModel" class="level1">
+<h1>model_ryder.RyderModel</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    n_state</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    obs_times</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    sde_times</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    obs_mat</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    restrict<span class="op">=</span><span class="va">False</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This module implement the RNN method of Ryder at al.&nbsp;(2018)</p>
+RNN takes on the features:
+<p>where <span class="math inline">\(t_0, ... t_N\)</span> is the SDE time grid and <span class="math inline">\(t'_0, ..., t'_M\)</span> is the observation time grid. Here <span class="math inline">\(t'_m\)</span> is the next observation time greater than <span class="math inline">\(t_n\)</span>.</p>
+<p>The RNN returns <span class="math inline">\(\alpha, \beta^{1/2}\)</span> where simulation is done via <span class="math inline">\(x_n = x_{n-1} + \alpha \Delta t + \beta^{1/2} \sqrt \Delta t \epsilon\)</span>.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 67%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>n_state</td>
+<td>int</td>
+<td>Dimension of the latent at each time point.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>obs_times</td>
+<td>jax.Array</td>
+<td>The observation time points.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>sde_times</td>
+<td>jax.Array</td>
+<td>The discretization time points used to sample the latents.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>obs_mat</td>
+<td>jax.Array</td>
+<td>The fixed observation matrix assumed in Ryder.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>restrict</td>
+<td>bool</td>
+<td>Flag for determining whether the simulated <span class="math inline">\(x\)</span> needs to be positive.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>This will clone the repo into a subfolder <code>sde-ievi</code>, from where you (i) issue the <code>git clone</code> command and (ii) install the package from source.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/mlysy/sde-ievi</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sde-ievi</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#ievi.model_ryder.RyderModel.simulate">simulate</a></td>
+<td>Simulate <span class="math inline">\(x\)</span> using Ryder and compute <span class="math inline">\(\log q(x \mid \theta)\)</span>.</td>
+</tr>
+<tr class="even">
+<td><a href="#ievi.model_ryder.RyderModel.simulate_theta">simulate_theta</a></td>
+<td>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ievi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</a></td>
+<td>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution assuming a RNN. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<section id="ievi.model_ryder.RyderModel.simulate" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ryder.RyderModel.simulate">simulate</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel.simulate(key, params, y_meas, x_init, theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Simulate <span class="math inline">\(x\)</span> using Ryder and compute <span class="math inline">\(\log q(x \mid \theta)\)</span>.</p>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 77%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>key</td>
+<td>jax.PRNGKey</td>
+<td>PRNG key.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>params</td>
+<td>dict</td>
+<td>Dictionary holding the neural network parameters and other parameters necessary to simulate <span class="math inline">\(\theta\)</span> and <span class="math inline">\(x\)</span>.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>y_meas</td>
+<td>jax.Array</td>
+<td>Observations.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>x_init</td>
+<td>jax.Array</td>
+<td>Initial value for the latent SDE.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>theta</td>
+<td>jax.Array</td>
+<td>SDE parameters.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="building-documentation" class="level2">
-<h2 class="anchored" data-anchor-id="building-documentation">Building Documentation</h2>
-<p>From within <code>sde-ievi/docs</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quartodoc</span> build</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x</td>
+<td>jax.Array</td>
+<td>Latents at the SDE time points.</td>
+</tr>
+<tr class="even">
+<td>logpdf</td>
+<td>float</td>
+<td><span class="math inline">\(\log q(x \mid \theta)\)</span>.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ievi.model_ryder.RyderModel.simulate_theta" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ryder.RyderModel.simulate_theta">simulate_theta</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel.simulate_theta(key, params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</p>
+</section>
+<section id="ievi.model_ryder.RyderModel.simulate_theta_rnn" class="level3">
+<h3 class="anchored" data-anchor-id="ievi.model_ryder.RyderModel.simulate_theta_rnn">simulate_theta_rnn</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model_ryder.RyderModel.simulate_theta_rnn(key, params, y_meas, n_theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Simulate <span class="math inline">\(\theta\)</span> using the variation distribution assuming a RNN. Also compute <span class="math inline">\(\log q(\theta)\)</span>.</p>
 
 
+</section>
 </section>
 </section>
 
@@ -606,6 +890,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../reference/model_ievimixed.SmoothModel.html" class="pagination-link" aria-label="model_ievimixed.SmoothModel">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">model_ievimixed.SmoothModel</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
