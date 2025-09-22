@@ -1,0 +1,12 @@
+{
+  "hash": "54f19b2fe2c1ed14c3bf85113e3d5e06",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\njupyter: python3\n---\n\n\n# **IEVI**: Information-Efficient Variational Inference for SDEs\n\n---\n\n## What is **IEVI**?\n\n**IEVI** is a variational inference method for SDEs that approximates the intractable latent posterior. Compared to other variational inference methods, **IEVI** captures not only the correct conditional dependence structure but also the correct *information flow* from the observations to the intractable posterior.\n\n---\n\n## Installation\n\nThis will clone the repo into a subfolder `sde-ievi`, from where you (i) issue the `git clone` command and (ii) install the package from source.\n\n```bash\ngit clone https://github.com/mlysy/sde-ievi\ncd sde-ievi\npip install .\n``` \n\n## Building Documentation\n\nFrom within `sde-ievi/docs`:\n\n```bash\nquartodoc build\nquarto render\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
