@@ -109,9 +109,9 @@ class SmoothModel:
     where $x$ are the latents, $y$ are the observations, $\theta$ are the SDE parameters, and $\eta$ are the random effects.
     The random-effects are modelled via a neural network given by
     $$
-    A, b, V = \textnormal{NN}_{\eta}(y_{0:N}).
+    A, b, V = \textnormal{NN}_{\eta}(y_{0:N}),
     $$
-    The latents are modelled by a RNN give by
+    where random effects are simulated via $\eta = A \theta + b + V \epsilon$. The latents are modelled by a RNN give by
     $$
     \mu_{x}, \Sigma_{x} = \textnormal{RNN}(y_{0:N}, \eta)
     $$
@@ -123,15 +123,21 @@ class SmoothModel:
     \end{equation}
     where we fit a neural network to find
     $$
-    \mu^\prime_n, \Sigma^\prime_n, = \textnormal{NN}(x_{n+1}, \mu_{x}, \Sigma_{x}).
+    \mu^\prime_n, \Sigma^\prime_n = \textnormal{NN}(x_{n+1}, \mu_{x}, \Sigma_{x}).
     $$
 
-    Args:
-        n_state (int): Dimension of the latent at each time point.
-        random_ind (jnp.array): The indices of the parameters used to generate the random effects.
-        fixed_ind (jnp.array): The indices of the fixed-effect parameter.
-        obs_times (jnp.array): The observation time points.
-        sde_times (jnp.array): The discretization time points to sample the latents.
+    Parameters
+    ----------
+    n_state : int
+        Dimension of the latent at each time point.
+    random_ind : jax.Array
+        Indices of the parameters used to generate the random effects.
+    fixed_ind : jax.Array
+        Indices of the fixed-effect parameters.
+    obs_times : jax.Array
+        Observation time points.
+    sde_times : jax.Array
+        Discretization time points used to sample the latents.
     """
 
     def __init__(self, n_state, random_ind, fixed_ind, obs_times, sde_times):
@@ -381,7 +387,9 @@ class SmoothModel:
         return random_effect, jnp.sum(nlp)
 
     def _save_pars(self, params, y_meas):
-
+        r"""
+        Save trained parameters to model.
+        """
         def vmap_fun(y_n):
             obs_input = self._rnn_input(y_n)
             return self._par_parse(params, obs_input)
@@ -392,7 +400,9 @@ class SmoothModel:
     
     def _sim_x(self, key, mean_state_pred, var_state_pred, mean_state_filt1, 
                mean_state_filt2, var_state_filt, wgt_state1, wgt_state2, phi, x_init):
-        
+        r"""
+        Simulate $x$ during training.
+        """
         state_filt_random = jax.vmap(jnp.dot, in_axes=[0, None])(mean_state_filt2, phi)
         mean_state_pred = mean_state_pred + jax.vmap(jnp.dot, in_axes=[0, None])(wgt_state2, phi) + \
             jax.vmap(jnp.dot)(wgt_state1, state_filt_random)
@@ -405,7 +415,9 @@ class SmoothModel:
         return x_state_smooth + x_init, x_neglogpdf
 
     def _sim_trained(self, key, random_fixed, x_init):
-        
+        r"""
+        Simulate $x$ after training is done.
+        """
         return jax.vmap(self._sim_x)(key, self.mean_state_pred, self.var_state_pred, 
                                      self.mean_state_filt1, self.mean_state_filt2, self.var_state_filt,
                                      self.wgt_state1, self.wgt_state2, random_fixed, x_init)
@@ -413,24 +425,36 @@ class SmoothModel:
 
     def simulate(self, key, params, y_meas, x_init):
         r"""
-        Simulate $\theta$, $\eta$ and $x$ using the variational distribution. Also compute $\log q(\theta) + \log q(\eta \mid \theta)  + \log q(x \mid \eta)$.
+        Simulate $\theta$, $\eta$, and $x$ using IEVI and compute 
+        $\log q(\theta) + \log q(\eta \mid \theta) + \log q(x \mid \eta)$.
 
-        Args:
-            key (random.key): PRNG key.
-            params (dict): Dictionary to hold the neural network parameters and other parameters necessary to simulate $\theta$ and $x$.
-            y_meas (jnp.array): Observations.
-            x_init (jnp.array): Initial guess of the latent.
+        Parameters
+        ----------
+        key : jax.PRNGKey
+            PRNG key.
+        params : dict
+            Dictionary holding the neural network parameters and other parameters necessary 
+            to simulate $\theta$ and $x$.
+        y_meas : jax.Array
+            Observations.
+        x_init : jax.Array
+            Initial guess of the latent.
 
-        Returns:
-            x (jnp.array): Latents at the SDE time points.
-            theta (jnp.array): SDE parameters.
-            eta (jnp.array): Random effects.
-            logpdf (float):  $\log q(\theta) + \log q(\eta \mid \theta)  + \log q(x \mid \eta)$.
+        Returns
+        -------
+        x : jax.Array
+            Latents at the SDE time points.
+        theta : jax.Array
+            SDE parameters.
+        eta : jax.Array
+            Random effects.
+        logpdf : float
+            $\log q(\theta) + \log q(\eta \mid \theta) + \log q(x \mid \eta)$.
         """
         key, *subkeys = jax.random.split(key, num=4)
         # simulate theta
         theta, theta_entpy = self._simulate_theta(subkeys[0], params)
-        idx = jnp.array([1,3,4])
+        idx = jax.Array([1,3,4])
         theta_exp = theta.at[idx].set(jnp.exp(theta[idx])) # convert to original scale
         
         # simulate random effect
@@ -449,8 +473,6 @@ class SmoothModel:
         x_state, x_neglogpdf = jax.vmap(vmap_fun)(random_effect, y_meas)
         x_neglogpdf = jnp.sum(x_neglogpdf)
         # calculate -E[log q(x, theta|phi_full)]
-        # use entropy for - E[log q(theta)]
-        # use negative logpdf for - E[log q(eta|theta)]
-        # use negative logpdf for - E[log q(x|eta)]
+        # break down to - E[log q(theta)] - E[log q(eta|theta)] - E[log q(x|eta)]
         theta_x_neglogpdf = x_neglogpdf + theta_entpy + random_neglogpdf
         return (x_state + x_init, theta, random_effect), theta_x_neglogpdf

@@ -5,22 +5,51 @@ project:
 metadata-files:
   - _sidebar.yml
 
+format:
+  html:
+    toc: true
+
+# list files to render
+execute:
+  freeze: auto
+
+website:
+  title: "IEVI"
+  page-navigation: true
+  navbar:
+    left:
+      - href: reference/
+        text: Reference
+
+    right:
+      - icon: github
+        href: https://github.com/mlysy/sde-ievi
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
-  package: svi
+  package: ievi
 
   # write sidebar data to this file
   sidebar: _sidebar.yml
 
-  parser: google
+  parser: numpy
   sections:
-    - title: Gaussian Model
-      desc: The variational distribution used to sample the latent SDE.
+    - title: Standard IEVI Model
+      desc: Standard IEVI model.
       contents:
-        - model_svi.SmoothModel
+        - model_ievi.SmoothModel
+      
+    - title: Gaussian IEVI Model
+      desc: IEVI for standard Gaussian models.
+      contents:
+        - model_ievi.SmoothModel
     
-    - title: Mixed-Effects Model
-      desc: The variational distribution used for the Orange tree growth SDE.
+    - title: Mixed-Effects IEVI Model
+      desc: IEVI for mixed-effects models.
       contents:
-        - model_svimixed.SmoothModel
+        - model_ievimixed.SmoothModel
+
+    - title: Ryder Model
+      desc: Ryder model.
+      contents:
+        - model_ryder.RyderModel
