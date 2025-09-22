@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 import equinox as eqx
-from svi.utils import theta_to_chol
+from ievi.utils import theta_to_chol
 
 
 # Ruder NN model

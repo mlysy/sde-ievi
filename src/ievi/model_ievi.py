@@ -2,7 +2,7 @@ import jax
 import jax.numpy as jnp
 from rodeo.kalmantv import standard
 import equinox as eqx
-from svi.utils import theta_to_chol
+from ievi.utils import theta_to_chol
 
 
 # RNN for forward pass

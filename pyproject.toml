@@ -33,6 +33,7 @@ dependencies = [
     "jaxlib",
     "jax",
     "equinox"
+    "rodeo"
 ]
 keywords = ["jax", 
     "parameter-inference", 
